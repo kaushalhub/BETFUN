@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 
 const Master = () => {
   return (
     <div>
+      <Navbar />
+    <Sidebar />
       <div className="forModal" />
       <div className="container body">
         <div className="main_container" id="sticky">

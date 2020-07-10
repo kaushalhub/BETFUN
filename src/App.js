@@ -24,18 +24,13 @@ import Fancystack from './components/Fancystack';
 const App = () => {
   return (
      <Router>
-      {
-      window.location.pathname !== '/login' ? <Navbar />:null,
-      console.log(window.location.pathname)
-      }
+       
            <Fragment>
-        <Navbar />
-        <Sidebar />
-        <Route exact path='/' component={Dashboard} />
+        <Route exact path='/' component={Login} />
        <section>
        <Switch>
           <Route exact path='/master' component={Master} />
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/user" component={User} />
           <Route exact path="/closeuser" component={CloseUser} />
           <Route exact path="/blockmarket" component={BlockMarket} />
@@ -55,6 +50,7 @@ const App = () => {
          
          </Fragment>
       </Router>   
+  
 
   );
 }   

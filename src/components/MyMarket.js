@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 
 const MyMarket = () => {
     return (
       <div>
+        <Navbar />
+    <Sidebar />
         <div className=" body">
         <div className="left-side-menu">
           <div className="panel-group" id="accordion">

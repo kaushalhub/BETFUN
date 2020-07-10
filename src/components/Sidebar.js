@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
-
 class sidebar extends Component {
   render() {
 
-    if (window.location.pathname === '/login') return null;
+    if (window.location.pathname === '/') return null;
 
     return (
         <div className="left-side-menu">

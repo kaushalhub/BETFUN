@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 
 const Livegame = () => {
     return (
         <div>
+          <Navbar />
+    <Sidebar />
         <div className="forModal" />      <div className="container body">
           <div className="main_container" id="sticky">
             <style dangerouslySetInnerHTML={{__html: "\n    .mark-back:hover{background: #4cebdc !important;}\n    .mark-lay:hover{background: #c6f6f2 !important;}\n    .mark-back{background: #7CC4F7 !important;}\n    .mark-lay{background: #FCA4B7 !important;}\n" }} />

@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 
 const BlockMarket = () => {
     return (
         <div>
+          <Navbar />
+    <Sidebar />
         <div className="forModal" />      <div className="container body">
           <div className="main_container" id="sticky">
             <div className="right_col" role="main">

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 class Navbar extends Component {
 
   render() {
-    if (window.location.pathname === '/login') return null;
+    if (window.location.pathname === '/') return null;
     return  (
 
         <div className="header-section">
@@ -15,7 +15,7 @@ class Navbar extends Component {
             <div className="nav_menu">
               <nav className role="navigation">
                 <div className="nav_title">
-                  <Link to="/" className="site_title endcooki"> 
+                  <Link to="/dashboard" className="site_title endcooki"> 
                         <h1 className="logocolor"></h1>
                   </Link>
                 </div>
@@ -27,7 +27,7 @@ class Navbar extends Component {
                     <nav id="cssmenu">
                       {/*<div class="button"></div>*/}
                       <ul className="nav">
-                        <li className="hidden-xs"><Link className="endcooki" to="/"><i className="fa fa-home hidden-xs" /></Link></li>
+                        <li className="hidden-xs"><Link className="endcooki" to="/dashboard"><i className="fa fa-home hidden-xs" /></Link></li>
                         <li>
                           <Link to="#"><i className="fa fa-users" /> User </Link>
                           <ul>
