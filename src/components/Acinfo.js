@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-
 const Acinfo = () => {
     return (
+      
         <div>
         <div className="forModal" />      <div className="container body">
           <div className="main_container" id="sticky">

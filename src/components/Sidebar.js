@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
-const sidebar = () => {
+
+class sidebar extends Component {
+  render() {
+
+    if (window.location.pathname === '/login') return null;
+
     return (
         <div className="left-side-menu">
             <div className="panel-group" id="accordion">
@@ -207,6 +212,6 @@ const sidebar = () => {
           </div>
     )
 }
-
+}
 
 export default sidebar;

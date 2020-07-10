@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 
-const Navbar = () => {
-    return (
+class Navbar extends Component {
+
+  render() {
+    if (window.location.pathname === '/login') return null;
+    return  (
+
         <div className="header-section">
           <div className="top_nav">
             <div className="righttogal righttogalhide">
@@ -12,7 +16,7 @@ const Navbar = () => {
               <nav className role="navigation">
                 <div className="nav_title">
                   <Link to="/" className="site_title endcooki"> 
-                        <h1 className="logocolor">BETFUN360</h1>
+                        <h1 className="logocolor"></h1>
                   </Link>
                 </div>
                 {/*top navigation */}
@@ -76,6 +80,7 @@ const Navbar = () => {
           </div>
         </div>
     )
+}
 }
 
 export default Navbar;

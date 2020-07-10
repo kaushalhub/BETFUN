@@ -52,5 +52,67 @@
     <script src="http://park9.bet/assets/js/menu.js"></script>
     <script src="http://park9.bet/assets/js/custom.js?ver=1.2"></script>
 
+    <script>
+      $(document).ready(function(){
+        var isFav = '0';
+        var ParmesMarketId = '0';	
+        if(isFav==1){
+          var favMAtches = JSON.parse('[]');
+           $.each(favMAtches, function( keyNew, valueNew ) {
+            MarketSelection(valueNew,keyNew);	
+          });
+        }
+        else if(ParmesMarketId > 0 ){			
+          MarketSelection('0',0);		
+        }	
+       });
+      $( "<div class='overlay-table'><span>Odds will start in next 15 minutes.</span></div>" ).insertBefore( ".ovrly-tbl" );    
+   </script>
+
+    <script>
+      $(document).ready(function() {
+        $(".match-buttons").click(function () {		
+          $(this).addClass("actives");   
+            $(".btn-back").addClass("aj-back");
+        });
+        $(".tbback").click(function () {
+          $('#cricket, #tennis, #soccer').removeClass("actives");
+          $(".match-buttons").removeClass("actives");
+            $(".btn-back").removeClass("aj-back");
+        });
+        $(".nav-tabs li").click(function () {	   
+          var dt=$(this).data('tabname');
+          $('#cricket, #tennis, #soccer').removeClass("actives");
+          $('#'+dt).addClass('actives')
+        });
+      });
+      </script>
+
+    <script>
+      $(document).on('click', '.panel-heading span.clickable', function(e){
+      var $this = $(this);
+       if(!$this.hasClass('panel-collapsed')) {
+        $this.parents('.balance-box').find('.balance-panel-body').slideUp();
+        $this.addClass('panel-collapsed');
+        $this.find('i').removeClass('fa fa-chevron-down').addClass('fa fa-chevron-up');
+    
+       } else {
+        $this.parents('.balance-box').find('.balance-panel-body').slideDown();
+        $this.removeClass('panel-collapsed');
+        $this.find('i').removeClass('fa fa-chevron-up').addClass('fa fa-chevron-down');
+        
+       }
+      })
+    </script>
+
+    <script>
+      $('.right_col').click(function(){
+          $('.child_menu').hide();
+      });
+      $('.top_nav').click(function(){
+          $('.child_menu').hide();
+      });
+   </script>
+
   </body>
 </html>
