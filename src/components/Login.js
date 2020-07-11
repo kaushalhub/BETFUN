@@ -59,8 +59,7 @@ export default class Login extends Component {
   
       render() {
   
-          if (this.state.redirectToReferrer){
-  
+          if (this.state.redirectToReferrer){   
             return (<Redirect to={'/dashboard'}/>)
       }
         

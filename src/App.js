@@ -1,9 +1,7 @@
 import React, { Fragment } from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, withRouter, Redirect } from 'react-router-dom';
 
-import Navbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import Master from './components/Master';
 import Login from './components/Login';
@@ -21,6 +19,26 @@ import Userpl from './components/Userpl';
 import ProfitLoss from './components/ProfitLoss';
 import Livegame from './components/Livegame';
 import Fancystack from './components/Fancystack';
+
+// const authentication={
+//    isLoggedIn: false,
+//    onAuthentication() {
+//       this.isLoggedIn=true;
+//    },
+//    getLogInStatus() {
+//       return this.isLoggedIn
+//    }
+// }
+
+// function SecuredRoute(props) {
+//    return (
+//       <Route path={props.path} render={data=>authentication.getLogInStatus()?(
+//          <props.component {...data}></props.component>):
+//          (<Redirect to={{ pathname : '/' }}></Redirect>)}></Route>   
+//    )
+// }
+
+
 const App = () => {
   return (
      <Router>
