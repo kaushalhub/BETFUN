@@ -2,8 +2,88 @@ import React, { Component } from 'react'
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 
-const Master = () => {
-  return (
+export default class Master extends Component {
+
+constructor(props){
+            super(props);
+            this.state = {
+             data : '',
+             name:'',
+             username:'',
+             password:'',
+             master:'',
+               redirectToReferrer : false
+            };
+           
+        }
+
+
+
+
+  componentDidMount(){
+  
+  let url = 'http://35.154.81.179:4000/api/getMasters'
+   fetch(url, {
+  method: 'GET',
+  headers: new Headers({
+    'Content-Type': 'application/json;charset=utf-8',
+    'authorization' : "Brebar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOnsiY3JlYXRlZEF0IjoiMjAyMC0wNy0xMCIsInN0YXR1cyI6ZmFsc2UsIndhbGxldEJhbGFuY2UiOjAsInVzZXJUeXBlIjp0cnVlLCJNYXN0ZXIiOmZhbHNlLCJBZG1pbiI6ZmFsc2UsInN1cGVyQWRtaW4iOmZhbHNlLCJibG9ja2VkIjpmYWxzZSwiQ29tbWlzc2lvbiI6MCwicmVmIjpbXSwiY29tcGxldGVkQ2FzaW5vR2FtZSI6W10sIndpbkNhc2lub0dhbWUiOltdLCJ1c2VyTmFtZSI6ImRlbW8iLCJtYXN0ZXIiOiJoZW1hbnQyIiwiaWQiOiI1ZjA4OWExYWQ4MjZjZjM3OGI4NGRhODgifSwiaWF0IjoxNTk0NTQ3MTcxLCJleHAiOjE1OTQ1NTA3NzF9.kYR5NBQ5AeWdTHnh4G-3cr3rWQ9ozUTrFNHxnqfBm2w"
+  }),
+
+})    .then(response => response.json())
+      .catch((error) => alert(error))
+      .then(result =>{ 
+
+this.setState({
+  data : result
+})
+})
+
+        
+      }
+
+
+
+ save(){
+  
+  let url = 'http://35.154.81.179:4000/api/getUsers'
+  let data={name:this.state.name,username:this.state.username,password:this.state.password,master:this.state.master}
+   fetch(url, {
+  method: 'POST',
+  body:JSON.stringify(data),
+  
+  headers: new Headers({
+    'Content-Type': 'application/json;charset=utf-8',
+    'authorization' : "Brebar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOnsiY3JlYXRlZEF0IjoiMjAyMC0wNy0xMCIsInN0YXR1cyI6ZmFsc2UsIndhbGxldEJhbGFuY2UiOjAsInVzZXJUeXBlIjp0cnVlLCJNYXN0ZXIiOmZhbHNlLCJBZG1pbiI6ZmFsc2UsInN1cGVyQWRtaW4iOmZhbHNlLCJibG9ja2VkIjpmYWxzZSwiQ29tbWlzc2lvbiI6MCwicmVmIjpbXSwiY29tcGxldGVkQ2FzaW5vR2FtZSI6W10sIndpbkNhc2lub0dhbWUiOltdLCJ1c2VyTmFtZSI6ImRlbW8iLCJtYXN0ZXIiOiJoZW1hbnQyIiwiaWQiOiI1ZjA4OWExYWQ4MjZjZjM3OGI4NGRhODgifSwiaWF0IjoxNTk0NTQ3MTcxLCJleHAiOjE1OTQ1NTA3NzF9.kYR5NBQ5AeWdTHnh4G-3cr3rWQ9ozUTrFNHxnqfBm2w"
+  }),
+
+})    .then(response => response.json())
+      .catch((error) => alert(error))
+      .then(result =>{ 
+
+this.setState({
+  data : result
+})
+})
+
+        
+      }
+
+
+
+
+
+  render(){
+
+console.log("data",this.state.data)
+let list = this.state.data
+console.log("list",list);
+var i=0;
+
+
+if(list[0]){
+
+ return (
     <div>
       <Navbar />
     <Sidebar />
@@ -48,9 +128,35 @@ const Master = () => {
                 <button className="btn btn-warning btn-xs" onclick="setAction()" style={{ padding: '4px 5px' }}>
                   ACTION
                   </button>
-                <button className="btn btn-warning btn-xs" onclick="addUser(145315,3)" style={{ padding: '4px 5px' }}>
+                <button className="btn btn-warning btn-xs" data-toggle="modal" data-target="#exampleModal" style={{ padding: '4px 5px' }}>
                   ADD USER
                   </button>
+
+                  {/* modal */}
+
+                  <div className="modal fade" id="exampleModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <input type="text" className="form-control" name="name" placeholder="Enter Name" />
+              <input type="text" className="form-control" name="userName" placeholder="Enter Username" />
+              <input type="text" className="form-control" name="password" placeholder="Enter Password" />
+              <input type="text" className="form-control" name="master" placeholder="Enter Master" />
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* modal  */}
               </div>
             </div>
             <div className="clearfix" />
@@ -84,16 +190,23 @@ const Master = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr id="user_row_152052">
-                        <td>1                              <input type="checkbox" defaultValue={152052} className="select-users" />
+
+
+{
+  list.map(item=>{
+    i=i+1
+    return(
+  <tr id="user_row_152052">
+                        <td>{i}                             
+                         <input type="checkbox" className="select-users" />
                         </td>
                         <td className=" " style={{ paddingBottom: '0px' }}>
                           <span className="m-bg">
-                            <a href="#" title="View Child">        pa12345(parik)</a>
+                            <a href="#" title="View Child"> {item.userName}</a>
                           </span>
                         </td>
                         <td>park9.bet</td>
-                        <td>100000.00</td><td>20000.00</td><td className=" ">80000</td><td className=" ">0%</td><td className=" ">0%</td><td className=" ">0%</td><td className=" ">0.00</td><td className=" ">0.00</td>
+                        <td>100000.00</td><td>20000.00</td><td className=" ">{item.walletBalance}</td><td className=" ">0%</td><td className=" ">0%</td><td className=" ">0%</td><td className=" ">0.00</td><td className=" ">0.00</td>
                         <td className="last">
                           <span className="dropdown">
                             <a href="#" className="dropdown-toggle btn btn-xs btn-success" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View More <span className="caret" /></a>
@@ -117,72 +230,13 @@ const Master = () => {
                           </span>
                         </td>
                       </tr>
-                      <tr id="user_row_145440">
-                        <td>2                              <input type="checkbox" defaultValue={145440} className="select-users" />
-                        </td>
-                        <td className=" " style={{ paddingBottom: '0px' }}>
-                          <span className="m-bg">
-                            <a href="#" title="View Child">        Sameer11(sameer)</a>
-                          </span>
-                        </td>
-                        <td>park9.bet</td>
-                        <td>0.00</td><td>0.00</td><td className=" ">0</td><td className=" ">0%</td><td className=" ">0%</td><td className=" ">0%</td><td className=" ">0.00</td><td className=" ">0.00</td>
-                        <td className="last">
-                          <span className="dropdown">
-                            <a href="#" className="dropdown-toggle btn btn-xs btn-success" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View More <span className="caret" /></a>
-                            <ul className="dropdown-menu">
-                              <li>
-                                <a className href="javascript:;" onclick="addUser(145440,4)"><span>Add User</span></a>
-                              </li>
-                              <li> <a className href=" #">
-                                <span>Statement</span> </a></li>
-                              <li><a className href=" #">
-                                <span>Profit Loss</span> </a></li>
-                              <li>
-                                <a className href="javascript:;" title="View Account Info" onclick="view_account('145440');"><span>View Info</span></a>
-                              </li>
-                              <li> <a className href="javascript:;" title="Change Password" onclick="view_change_passs('145440');"><span>Change Password</span></a></li>
-                              <li> <a className href="javascript:;" title="Free Chip In Out" onclick="free_chips_in_out('145440','D');"><span>Free Chip Deposit</span></a></li>
-                              <li>
-                                <a className href="javascript:;" title="Free Chip In Out" onclick="free_chips_in_out('145440','W');"><span>Free Chip Withdrawal</span></a>
-                              </li>
-                            </ul>
-                          </span>
-                        </td>
-                      </tr>
-                      <tr id="user_row_145330">
-                        <td>3                              <input type="checkbox" defaultValue={145330} className="select-users" />
-                        </td>
-                        <td className=" " style={{ paddingBottom: '0px' }}>
-                          <span className="m-bg">
-                            <a href="#" title="View Child">        Raghu22(raghu)</a>
-                          </span>
-                        </td>
-                        <td>park9.bet</td>
-                        <td>5000.00</td><td>0.00</td><td className=" ">5000</td><td className=" ">0%</td><td className=" ">0%</td><td className=" ">0%</td><td className=" ">0.00</td><td className=" ">0.00</td>
-                        <td className="last">
-                          <span className="dropdown">
-                            <a href="#" className="dropdown-toggle btn btn-xs btn-success" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View More <span className="caret" /></a>
-                            <ul className="dropdown-menu">
-                              <li>
-                                <a className href="javascript:;" onclick="addUser(145330,4)"><span>Add User</span></a>
-                              </li>
-                              <li> <a className href=" #">
-                                <span>Statement</span> </a></li>
-                              <li><a className href=" #">
-                                <span>Profit Loss</span> </a></li>
-                              <li>
-                                <a className href="javascript:;" title="View Account Info" onclick="view_account('145330');"><span>View Info</span></a>
-                              </li>
-                              <li> <a className href="javascript:;" title="Change Password" onclick="view_change_passs('145330');"><span>Change Password</span></a></li>
-                              <li> <a className href="javascript:;" title="Free Chip In Out" onclick="free_chips_in_out('145330','D');"><span>Free Chip Deposit</span></a></li>
-                              <li>
-                                <a className href="javascript:;" title="Free Chip In Out" onclick="free_chips_in_out('145330','W');"><span>Free Chip Withdrawal</span></a>
-                              </li>
-                            </ul>
-                          </span>
-                        </td>
-                      </tr>
+      )
+  })
+}
+
+                    
+                 
+                   
                     </tbody>
                     <tfoot>
                       <tr><td colSpan={5} /><td colSpan={9}>Total Balance: 85000</td></tr>
@@ -194,7 +248,7 @@ const Master = () => {
               </div>
             </div>
           </div>
-          {/*commanpopup*/}
+          {/commanpopup/}
           <div id="commonpopup" className="modal fade" role="dialog">
             <div className="modal-dialog">
               <div className="modal-content">
@@ -214,11 +268,18 @@ const Master = () => {
               </div>
             </div>
           </div>
-          {/*commanpopup*/}       </div>
+          {/commanpopup/}       </div>
       </div>
     </div>
 
   )
-}
 
-export default Master;
+}
+else{
+return(
+<p>Loading...</p>
+  )
+}
+ 
+}
+}

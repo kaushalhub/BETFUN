@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 import Dashboard from './components/Dashboard';
 import Master from './components/Master';
@@ -37,7 +38,6 @@ import Fancystack from './components/Fancystack';
 //          (<Redirect to={{ pathname : '/' }}></Redirect>)}></Route>   
 //    )
 // }
-
 
 const App = () => {
   return (

@@ -35,7 +35,7 @@ export default class Login extends Component {
   
           if(this.state.userName && this.state.password)
             {
-         axios.post(`http://localhost:4100/api/login`,user)
+         axios.post(`http://35.154.81.179:4000/api/login`,user)
          .then((response) =>
             {
                 // alert("invalid email or password");
