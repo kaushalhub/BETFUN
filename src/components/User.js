@@ -3,6 +3,11 @@ import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import axios from 'axios';
 
+
+
+
+
+
 export default class User extends Component {
 
   constructor(props) {
@@ -18,6 +23,26 @@ export default class User extends Component {
     alert('hi')
   }
 
+ myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+
   componentDidMount() {
 
     let url = 'http://35.154.81.179:4000/api/getUsers'
@@ -25,8 +50,8 @@ export default class User extends Component {
       method: 'GET',
       headers: new Headers({
         'Content-Type': 'application/json;charset=utf-8',
-        'authorization': "Brebar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOnsiY3JlYXRlZEF0IjoiMjAyMC0wNy0xMCIsInN0YXR1cyI6ZmFsc2UsIndhbGxldEJhbGFuY2UiOjAsInVzZXJUeXBlIjp0cnVlLCJNYXN0ZXIiOmZhbHNlLCJBZG1pbiI6ZmFsc2UsInN1cGVyQWRtaW4iOmZhbHNlLCJibG9ja2VkIjpmYWxzZSwiQ29tbWlzc2lvbiI6MCwicmVmIjpbXSwiY29tcGxldGVkQ2FzaW5vR2FtZSI6W10sIndpbkNhc2lub0dhbWUiOltdLCJ1c2VyTmFtZSI6ImRlbW8iLCJtYXN0ZXIiOiJoZW1hbnQyIiwiaWQiOiI1ZjA4OWExYWQ4MjZjZjM3OGI4NGRhODgifSwiaWF0IjoxNTk0NTUxMjQ5LCJleHAiOjE1OTQ1NTQ4NDl9.DqBdFx76ARbhgKtr7DuxIYUAYiEMqdta0kzXdQpFj8s"
-      }),
+       'Authorization' : "Brebar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOnsiY3JlYXRlZEF0IjoiMjAyMC0wNy0xMCIsInN0YXR1cyI6ZmFsc2UsIndhbGxldEJhbGFuY2UiOjAsInVzZXJUeXBlIjp0cnVlLCJNYXN0ZXIiOmZhbHNlLCJBZG1pbiI6ZmFsc2UsInN1cGVyQWRtaW4iOmZhbHNlLCJibG9ja2VkIjpmYWxzZSwiQ29tbWlzc2lvbiI6MCwicmVmIjpbXSwiY29tcGxldGVkQ2FzaW5vR2FtZSI6W10sIndpbkNhc2lub0dhbWUiOltdLCJ1c2VyTmFtZSI6ImRlbW8iLCJtYXN0ZXIiOiJoZW1hbnQyIiwiaWQiOiI1ZjA4OWExYWQ4MjZjZjM3OGI4NGRhODgifSwiaWF0IjoxNTk0NTY5OTg5LCJleHAiOjE1OTQ1NzM1ODl9.SUqBURy-33YdpbxeqLP1FxOjEWbITNO7dVkGFBJlzO4"
+  }),
 
     }).then(response => response.json())
       .catch((error) => alert(error))
@@ -38,9 +63,7 @@ export default class User extends Component {
       })
 
   }
-  search() {
-    alert('hi')
-  }
+ 
 
   render() {
 
@@ -81,7 +104,7 @@ export default class User extends Component {
                       <input type="hidden" name="parentID" id="parentID" defaultValue />
                       <input type="hidden" name="formSubmit" defaultValue={1} />
                       <input type="hidden" name="perpage" id="perpage" />
-                      <input type="text" name="mstruserid" id="mstruserid" placeholder="Search here" defaultValue />
+                      <input type="text" name="mstruserid" id="myInput" onChange={this.myFunction} placeholder="Search here" />
                       <button className="fa fa-search" id="submit_form_button" onclick={this.search} data-attr="submit" />
                     </div>
                     <select className="user-mobile custom-user-select" id="useraction" style={{ color: 'black' }}>
@@ -107,10 +130,10 @@ export default class User extends Component {
 
 
 
-                      <table className="table table-striped jambo_table bulk_action" id="datatabless">
+                      <table className="table table-striped jambo_table bulk_action" id="myTable">
                         <thead>
                           <tr className="headings">
-                            <th>S.No.</th>
+                          
                             <th>User ID <a href="#" className="glyphicon glyphicon-arrow-up"> </a>
                               <a href="#" className="glyphicon glyphicon-arrow-down" />
                             </th>
@@ -144,9 +167,6 @@ export default class User extends Component {
                               i = i + 1;
                               return (
                                 <tr id="user_row_152262">
-                                  <td>{i}
-                                    <input type="checkbox" className="select-users" />
-                                  </td>
                                   <td className=" " style={{ paddingBottom: '0px' }}>
                                     <span className="m-bg">
                                       {item.userName}                            </span>

@@ -9,15 +9,15 @@ constructor(props){
             this.state = {
              data : '',
              name:'',
-             username:'',
+             userName:'',
              password:'',
              master:'',
+             walletBalance: '',
                redirectToReferrer : false
             };
-           
+             this.handleChange = this.handleChange.bind(this);
+               this.save = this.save.bind(this);
         }
-
-
 
 
   componentDidMount(){
@@ -27,8 +27,8 @@ constructor(props){
   method: 'GET',
   headers: new Headers({
     'Content-Type': 'application/json;charset=utf-8',
-    'authorization' : "Brebar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOnsiY3JlYXRlZEF0IjoiMjAyMC0wNy0xMCIsInN0YXR1cyI6ZmFsc2UsIndhbGxldEJhbGFuY2UiOjAsInVzZXJUeXBlIjp0cnVlLCJNYXN0ZXIiOmZhbHNlLCJBZG1pbiI6ZmFsc2UsInN1cGVyQWRtaW4iOmZhbHNlLCJibG9ja2VkIjpmYWxzZSwiQ29tbWlzc2lvbiI6MCwicmVmIjpbXSwiY29tcGxldGVkQ2FzaW5vR2FtZSI6W10sIndpbkNhc2lub0dhbWUiOltdLCJ1c2VyTmFtZSI6ImRlbW8iLCJtYXN0ZXIiOiJoZW1hbnQyIiwiaWQiOiI1ZjA4OWExYWQ4MjZjZjM3OGI4NGRhODgifSwiaWF0IjoxNTk0NTQ3MTcxLCJleHAiOjE1OTQ1NTA3NzF9.kYR5NBQ5AeWdTHnh4G-3cr3rWQ9ozUTrFNHxnqfBm2w"
-  }),
+ 'Authorization' : "Brebar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOnsiY3JlYXRlZEF0IjoiMjAyMC0wNy0xMCIsInN0YXR1cyI6ZmFsc2UsIndhbGxldEJhbGFuY2UiOjAsInVzZXJUeXBlIjp0cnVlLCJNYXN0ZXIiOmZhbHNlLCJBZG1pbiI6ZmFsc2UsInN1cGVyQWRtaW4iOmZhbHNlLCJibG9ja2VkIjpmYWxzZSwiQ29tbWlzc2lvbiI6MCwicmVmIjpbXSwiY29tcGxldGVkQ2FzaW5vR2FtZSI6W10sIndpbkNhc2lub0dhbWUiOltdLCJ1c2VyTmFtZSI6ImRlbW8iLCJtYXN0ZXIiOiJoZW1hbnQyIiwiaWQiOiI1ZjA4OWExYWQ4MjZjZjM3OGI4NGRhODgifSwiaWF0IjoxNTk0NTY5OTg5LCJleHAiOjE1OTQ1NzM1ODl9.SUqBURy-33YdpbxeqLP1FxOjEWbITNO7dVkGFBJlzO4"
+ }),
 
 })    .then(response => response.json())
       .catch((error) => alert(error))
@@ -42,36 +42,43 @@ this.setState({
         
       }
 
+
+
+   handleChange(event){
+                this.setState({
+                    [event.target.name] : event.target.value
+  
+                });
+        }
 
 
  save(){
-  
-  let url = 'http://35.154.81.179:4000/api/getUsers'
-  let data={name:this.state.name,username:this.state.username,password:this.state.password,master:this.state.master}
+ 
+  if(this.state.userName==null || this.state.userName == [] || this.state.userName=="" || this.state.userName == "null") alert("Enter User Name...");
+  else if(this.state.password==null || this.state.password == [] || this.state.password=="" || this.state.password == "null") alert("Enter Password...");
+  else  if(this.state.master==null || this.state.master == [] || this.state.master=="" || this.state.master == "null") alert("Enter Master...");
+  else{
+
+  let url = 'http://35.154.81.179:4000/api/createAccount'
+  let data={userName:this.state.userName,password:this.state.password,master:this.state.master}
    fetch(url, {
   method: 'POST',
   body:JSON.stringify(data),
-  
-  headers: new Headers({
+   headers: new Headers({
     'Content-Type': 'application/json;charset=utf-8',
-    'authorization' : "Brebar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOnsiY3JlYXRlZEF0IjoiMjAyMC0wNy0xMCIsInN0YXR1cyI6ZmFsc2UsIndhbGxldEJhbGFuY2UiOjAsInVzZXJUeXBlIjp0cnVlLCJNYXN0ZXIiOmZhbHNlLCJBZG1pbiI6ZmFsc2UsInN1cGVyQWRtaW4iOmZhbHNlLCJibG9ja2VkIjpmYWxzZSwiQ29tbWlzc2lvbiI6MCwicmVmIjpbXSwiY29tcGxldGVkQ2FzaW5vR2FtZSI6W10sIndpbkNhc2lub0dhbWUiOltdLCJ1c2VyTmFtZSI6ImRlbW8iLCJtYXN0ZXIiOiJoZW1hbnQyIiwiaWQiOiI1ZjA4OWExYWQ4MjZjZjM3OGI4NGRhODgifSwiaWF0IjoxNTk0NTQ3MTcxLCJleHAiOjE1OTQ1NTA3NzF9.kYR5NBQ5AeWdTHnh4G-3cr3rWQ9ozUTrFNHxnqfBm2w"
-  }),
+    'Authorization' : "Brebar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOnsiY3JlYXRlZEF0IjoiMjAyMC0wNy0xMCIsInN0YXR1cyI6ZmFsc2UsIndhbGxldEJhbGFuY2UiOjAsInVzZXJUeXBlIjp0cnVlLCJNYXN0ZXIiOmZhbHNlLCJBZG1pbiI6ZmFsc2UsInN1cGVyQWRtaW4iOmZhbHNlLCJibG9ja2VkIjpmYWxzZSwiQ29tbWlzc2lvbiI6MCwicmVmIjpbXSwiY29tcGxldGVkQ2FzaW5vR2FtZSI6W10sIndpbkNhc2lub0dhbWUiOltdLCJ1c2VyTmFtZSI6ImRlbW8iLCJtYXN0ZXIiOiJoZW1hbnQyIiwiaWQiOiI1ZjA4OWExYWQ4MjZjZjM3OGI4NGRhODgifSwiaWF0IjoxNTk0NTY5OTg5LCJleHAiOjE1OTQ1NzM1ODl9.SUqBURy-33YdpbxeqLP1FxOjEWbITNO7dVkGFBJlzO4"
+ }),
 
 })    .then(response => response.json())
       .catch((error) => alert(error))
       .then(result =>{ 
-
-this.setState({
-  data : result
-})
+alert("User Added Successfully")
 })
 
         
       }
 
-
-
-
+}
 
   render(){
 
@@ -138,19 +145,20 @@ if(list[0]){
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+              <h5 className="modal-title" id="exampleModalLabel">Add User</h5>
               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
             </div>
             <div className="modal-body">
-              <input type="text" className="form-control" name="name" placeholder="Enter Name" />
-              <input type="text" className="form-control" name="userName" placeholder="Enter Username" />
-              <input type="text" className="form-control" name="password" placeholder="Enter Password" />
-              <input type="text" className="form-control" name="master" placeholder="Enter Master" />
+             
+              <input type="text" className="form-control col-4" onChange={this.handleChange} name="userName" placeholder="Enter Username" /><br />
+              <input type="text" className="form-control" onChange={this.handleChange} name="password" placeholder="Enter Password" /><br />
+              <input type="text" className="form-control" onChange={this.handleChange} name="master" placeholder="Enter Master" /><br />  
+              <input type="text" className="form-control" onChange={this.handleChange} name="walletBalance" placeholder="Enter Wallet Balance" /><br />  
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-primary">Add</button>
+              <button type="button" className="btn btn-primary" onClick={this.save}>Add</button>
             </div>
           </div>
         </div>
@@ -205,7 +213,7 @@ if(list[0]){
                             <a href="#" title="View Child"> {item.userName}</a>
                           </span>
                         </td>
-                        <td>park9.bet</td>
+                        <td>BETFUN360</td>
                         <td>100000.00</td><td>20000.00</td><td className=" ">{item.walletBalance}</td><td className=" ">0%</td><td className=" ">0%</td><td className=" ">0%</td><td className=" ">0.00</td><td className=" ">0.00</td>
                         <td className="last">
                           <span className="dropdown">
@@ -234,9 +242,7 @@ if(list[0]){
   })
 }
 
-                    
-                 
-                   
+                     
                     </tbody>
                     <tfoot>
                       <tr><td colSpan={5} /><td colSpan={9}>Total Balance: 85000</td></tr>
@@ -248,7 +254,7 @@ if(list[0]){
               </div>
             </div>
           </div>
-          {/commanpopup/}
+         
           <div id="commonpopup" className="modal fade" role="dialog">
             <div className="modal-dialog">
               <div className="modal-content">
@@ -268,7 +274,7 @@ if(list[0]){
               </div>
             </div>
           </div>
-          {/commanpopup/}       </div>
+               </div>
       </div>
     </div>
 
