@@ -20,6 +20,7 @@ import Userpl from './components/Userpl';
 import ProfitLoss from './components/ProfitLoss';
 import Livegame from './components/Livegame';
 import Fancystack from './components/Fancystack';
+import SideBet from './components/SideBet';
 
 // const authentication={
 //    isLoggedIn: false,
@@ -63,6 +64,7 @@ const App = () => {
           <Route exact path="/profitloss" component={ProfitLoss} />
           <Route exact path="/livegame" component={Livegame} />
           <Route exact path="/fancystack" component={Fancystack} />
+          <Route exact path="/sidebet" component={SideBet} />
            </Switch> 
        </section>
          

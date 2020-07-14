@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
-class sidebar extends Component {
+ export default class sidebar extends Component {
+   
   render() {
 
     if (window.location.pathname === '/') return null;
@@ -212,5 +213,4 @@ class sidebar extends Component {
     )
 }
 }
-
-export default sidebar;
+  

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 
+
 class Navbar extends Component {
 
   render() {
@@ -16,7 +17,7 @@ class Navbar extends Component {
               <nav className role="navigation">
                 <div className="nav_title">
                   <Link to="/dashboard" className="site_title endcooki"> 
-                        <h1 className="logocolor"></h1>
+                  {/* logo */}
                   </Link>
                 </div>
                 {/*top navigation */}
