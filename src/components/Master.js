@@ -27,7 +27,7 @@ export default class Master extends Component {
       method: 'GET',
       headers: new Headers({
         'Content-Type': 'application/json;charset=utf-8',
-        'Authorization': "Brebar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOnsiY3JlYXRlZEF0IjoiMjAyMC0wNy0xMCIsInN0YXR1cyI6ZmFsc2UsIndhbGxldEJhbGFuY2UiOjAsInVzZXJUeXBlIjp0cnVlLCJNYXN0ZXIiOmZhbHNlLCJBZG1pbiI6ZmFsc2UsInN1cGVyQWRtaW4iOmZhbHNlLCJibG9ja2VkIjpmYWxzZSwiQ29tbWlzc2lvbiI6MCwicmVmIjpbXSwiY29tcGxldGVkQ2FzaW5vR2FtZSI6W10sIndpbkNhc2lub0dhbWUiOltdLCJ1c2VyTmFtZSI6ImRlbW8iLCJtYXN0ZXIiOiJoZW1hbnQyIiwiaWQiOiI1ZjA4OWExYWQ4MjZjZjM3OGI4NGRhODgifSwiaWF0IjoxNTk0NjE2Njg2LCJleHAiOjE1OTQ2MjAyODZ9.fWX2xjw6_-GNzbYnO1IfeGotUmaI0jZ6PszV9OInggw"
+        'Authorization': "Brebar "+JSON.parse(sessionStorage.getItem('data')).data.token
       }),
 
     }).then(response => response.json())
@@ -65,7 +65,7 @@ export default class Master extends Component {
         body: JSON.stringify(data),
         headers: new Headers({
           'Content-Type': 'application/json;charset=utf-8',
-          'Authorization': "Brebar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOnsiY3JlYXRlZEF0IjoiMjAyMC0wNy0xMCIsInN0YXR1cyI6ZmFsc2UsIndhbGxldEJhbGFuY2UiOjAsInVzZXJUeXBlIjp0cnVlLCJNYXN0ZXIiOmZhbHNlLCJBZG1pbiI6ZmFsc2UsInN1cGVyQWRtaW4iOmZhbHNlLCJibG9ja2VkIjpmYWxzZSwiQ29tbWlzc2lvbiI6MCwicmVmIjpbXSwiY29tcGxldGVkQ2FzaW5vR2FtZSI6W10sIndpbkNhc2lub0dhbWUiOltdLCJ1c2VyTmFtZSI6ImRlbW8iLCJtYXN0ZXIiOiJoZW1hbnQyIiwiaWQiOiI1ZjA4OWExYWQ4MjZjZjM3OGI4NGRhODgifSwiaWF0IjoxNTk0NjE2Njg2LCJleHAiOjE1OTQ2MjAyODZ9.fWX2xjw6_-GNzbYnO1IfeGotUmaI0jZ6PszV9OInggw"
+          'Authorization': "Brebar "+JSON.parse(sessionStorage.getItem('data')).data.token
         }),
 
       }).then(response => response.json())

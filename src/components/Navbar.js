@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
-
+import  mainLogo from '../betfun-logo.png';
 
 class Navbar extends Component {
 
@@ -17,7 +17,7 @@ class Navbar extends Component {
               <nav className role="navigation">
                 <div className="nav_title">
                   <Link to="/dashboard" className="site_title endcooki"> 
-                  {/* logo */}
+                  <img  src={mainLogo} alt="fireSpot"/>
                   </Link>
                 </div>
                 {/*top navigation */}

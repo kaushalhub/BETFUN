@@ -21,24 +21,8 @@ import ProfitLoss from './components/ProfitLoss';
 import Livegame from './components/Livegame';
 import Fancystack from './components/Fancystack';
 import SideBet from './components/SideBet';
+import MatchOdds from './components/MatchOdds';
 
-// const authentication={
-//    isLoggedIn: false,
-//    onAuthentication() {
-//       this.isLoggedIn=true;
-//    },
-//    getLogInStatus() {
-//       return this.isLoggedIn
-//    }
-// }
-
-// function SecuredRoute(props) {
-//    return (
-//       <Route path={props.path} render={data=>authentication.getLogInStatus()?(
-//          <props.component {...data}></props.component>):
-//          (<Redirect to={{ pathname : '/' }}></Redirect>)}></Route>   
-//    )
-// }
 
 const App = () => {
   return (
@@ -65,6 +49,7 @@ const App = () => {
           <Route exact path="/livegame" component={Livegame} />
           <Route exact path="/fancystack" component={Fancystack} />
           <Route exact path="/sidebet" component={SideBet} />
+          <Route exact path="/matchodds" component={MatchOdds} />
            </Switch> 
        </section>
          

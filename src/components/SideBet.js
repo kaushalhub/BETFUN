@@ -3,24 +3,83 @@ import React, { Component } from 'react'
 
 const SideBet = () => {
   return (
-    <div className="col-md-4 col-xs-12 matchBox" style={{ display: 'block' }}>
+    <div className="col-md-4 col-xs-12 matchBox">
       <div className="other-items" style={{ display: 'none' }}>
         <div className="balance-box">
           <div className="panel-heading">
             <h3 className="bal-tittle">Top Casino Games </h3>
             <span className="pull-right clickable"><i className="fa fa-chevron-down" /></span>
           </div>
-          <div className="balance-panel-body">
+          <div className="balance-panel-body" style={{ display: 'block' }}>
           </div>
         </div>
       </div>
       <div className="betSlipBox" style={{}}>
         <div className="betslip-head">
           <span id="tital_change" className="item">Bet Slip</span>
-          <a href="javascript:;" className="UserChipData" data-toggle="modal" data-target="#addUser" data-backdrop="static" data-keyboard="false">
+          <a href="javascript:;" className="UserChipData" data-toggle="modal" data-target="#exampleModal" data-backdrop="static" data-keyboard="false">
             Edit Stake
-            </a>
+        </a>
         </div>
+        {/* Modal */}
+        <div className="modal fade" id="exampleModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">Chip Setting</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div className="modal-body">
+              <div class="modal-body row">
+                <div class="col-md-6">
+                  <label>Chips Name 1:</label>
+                <input type="text" className="form-control" value="500" />
+
+                <label>Chips Name 2:</label>
+                <input type="text" className="form-control" value="2000" />
+
+                <label>Chips Name 3:</label>
+                <input type="text" className="form-control" value="5000" />
+
+                <label>Chips Name 4:</label>
+                <input type="text" className="form-control" value="25000" />
+
+                <label>Chips Name 5:</label>
+                <input type="text" className="form-control" value="50000" />
+
+                <label>Chips Name 6:</label>
+                <input type="text" className="form-control" value="100000" /> 
+                </div>
+                <div class="col-md-6">
+                <label>Chips Value 1:</label>
+                <input type="text" className="form-control" value="500" />
+
+                <label>Chips Value 2:</label>
+                <input type="text" className="form-control" value="2000" />
+
+                <label>Chips Value 3:</label>
+                <input type="text" className="form-control" value="5000" />
+
+                <label>Chips Value 4:</label>
+                <input type="text" className="form-control" value="25000" />
+
+                <label>Chips Value 5:</label>
+                <input type="text" className="form-control" value="100000" />
+
+                <label>Chips Value 6:</label>
+                <input type="text" className="form-control" value="Enter" />
+                </div>
+            </div>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-primary text-center">Update ChipSetting</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* End Modal */}
         <div>
           <div className="betBox border-box" style={{ display: 'none' }}>
             <div className="block_box">
@@ -32,7 +91,7 @@ const SideBet = () => {
                   <div className="loader-inner box3" />
                 </div>
               </div>
-              <form method="POST" id="placeBetSilp"><input type="hidden" name="compute" defaultValue="6f50e2611cd01dacc18fc58492efa68c" />
+              <form method="POST" id="placeBetSilp"><input type="hidden" name="compute" defaultValue="0868b55786c39fbc0074796526de70db" />
                 <label className="control-label m-t-xs BetFor"> Yet (Bet For)</label>
                 <div className="liabilityprofit" id=" ">
                   <span className="stake_label">Profit</span>
@@ -98,7 +157,7 @@ const SideBet = () => {
         </div>
       </div>
       {/*- Match UnMatch data -*/}
-      <div className id="MatchUnMatchBetaData" style={{ display: 'block' }}><style dangerouslySetInnerHTML={{ __html: "\n.searchbtnn{margin-right:20px;}\n" }} />
+      <div className id="MatchUnMatchBetaData"><style dangerouslySetInnerHTML={{ __html: "\n.searchbtnn{margin-right:20px;}\n" }} />
         <div className="border-box" id="accountView" role="main">
           <div className="fullrow">
             <div className="modal-dialog-staff">
@@ -130,52 +189,9 @@ const SideBet = () => {
       </div>
       {/*- User Current Position  -*/}
       <div className id="getUserPosition" style={{ display: 'none' }}>
-        <div className=" " id="accountView" role="main">
-          <div className="row">
-            <div className="modal-dialog-staff">
-              <div className="modal-content">
-                <div className="modal-body">
-                  <div className="match_bets elementToHide">
-                    <table className="table table-striped jambo_table bulk_action">
-                      <tbody><tr id="datatable" className="headings">
-                        <td>Account</td>
-                        <td className="runnerOne">Seaside CC </td>
-                        <td className="runnerTwo">Jonkoping CA </td>
-                        <td className="runnerThree">Draw</td>
-                      </tr>
-                        <tr className="lgreen">
-                          <td>Total</td>
-                          <td className="gtext">0.00</td>
-                          <td className="gtext">0.00</td>
-                          <td className="gtext">0.00</td>
-                        </tr>
-                        <tr className="mgreen">
-                          <td>Parent</td>
-                          <td className="gtext">0.00</td>
-                          <td className="gtext">0.00</td>
-                          <td className="gtext">0.00</td>
-                        </tr>
-                        <tr className="dgreen">
-                          <td>Own</td>
-                          <td className="gtext">0</td>
-                          <td className="gtext">0</td>
-                          <td className="gtext">0</td>
-                        </tr>
-                      </tbody></table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
-
-
-
-// modal
-// modal end
-    )
+  )
 }
 
 
